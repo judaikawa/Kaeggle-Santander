@@ -21,7 +21,8 @@ summary(train_REAL$target) # Unbaleced
 
 # Scaled Dataset ---------------------------------------------------------------------
 scaled_train_REAL <- cbind(train_REAL[,c(1,2)], scale(train_REAL[,-c(1,2)]))
-scaled_test_REAL <- cbind(test_REAL[,c(1,2)], scale(test_REAL[,-c(1,2)]))
+scaled_test_REAL <- cbind(as.data.frame(test_REAL[,1]), scale(test_REAL[,-1]))
+names(scaled_test_REAL)[1] <- "ID_code"
 
 # Use dataset ------------------------------------------------------------------------
 train_USE <- scaled_train_REAL
